@@ -1,0 +1,15 @@
+<button type="button" class="btn btn-info" *ngIf="showFile" (click)='showFiles(false)'>Hidden Files</button>
+<button type="button" class="btn btn-warning" *ngIf="!showFile" (click)='showFiles(true)'>Show Files</button>
+<!---->
+<br/>
+<div [hidden]="!showFile">
+  <div class="panel panel-primary">
+      <div class="panel-heading">List of files</div>
+      <div *ngFor="let file of fileUploads | async">
+          <div class="panel-body">
+              <!--details upload @input fileUpload-->
+              <app-details-upload [fileUpload]='file'></app-details-upload>
+          </div>
+      </div>
+  </div>
+</div>
